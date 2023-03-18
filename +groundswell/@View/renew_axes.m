@@ -44,7 +44,8 @@ if ~isempty(self.model)
     if i<n_chan
       set(gca,'XTickLabel',{});
     else
-      xlabel('Time (s)','tag','x_axis_label','FontSize',10)
+      x_label_h = xlabel('Time (s)','tag','x_axis_label','FontSize',10) ;
+      disable_interactions_bang(x_label_h) ;
     end
   end
 
@@ -80,6 +81,7 @@ if ~isempty(self.model)
                         'units','pixels',...
                         'FontSize',10, ...
                         'buttondownfcn',chan_label_cb);
+    disable_interactions_bang(y_label_h(i)) ;
     n_sweeps=size(data_this,2);
     for j=1:n_sweeps
       line('Parent',axes_hs(i),...
