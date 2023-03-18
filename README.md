@@ -36,7 +36,7 @@ Copyright
 ---------
 
 Except where noted, all code, documentation, images, and anything else
-in Groundswell is copyright 2009-2017 by Adam L. Taylor.
+in Groundswell is copyright 2009-2023 by Adam L. Taylor.
 
 
 Contributions
@@ -498,4 +498,23 @@ Added support for ImageJ "jumbo" TIFF files.
 1.30 (January 26, 2017)
 
 Added ability to export ROI mask image.
+
+
+-----
+
+
+1.31 (March 17, 2023)
+
+Changes to make work better under Matlab r2023a.
+
+
+-----
+
+
+1.32 (March 17, 2023)
+
+Updated this README.md.
+
+
+
 
