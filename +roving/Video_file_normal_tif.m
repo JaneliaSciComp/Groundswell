@@ -5,6 +5,7 @@ classdef Video_file_normal_tif < handle
         original_libtiff_warning_state_  % used to restore libtiff warning state after we close a tiff file        
         original_libtiff_error_as_warning_state_
         original_new_libtiff_warning_state_
+        original_libtiff_warning_4_state_
         n_frame_
         bits_per_pel_
         n_row_
@@ -22,6 +23,8 @@ classdef Video_file_normal_tif < handle
             warning('off','MATLAB:imagesci:tiffmexutils:libtiffErrorAsWarning');            
             self.original_new_libtiff_warning_state_ = warning('query', 'imageio:tiffutils:libtiffWarning') ;
             warning('off','imageio:tiffutils:libtiffWarning');            
+            self.original_libtiff_warning_4_state_ = warning('query', 'imageio:tiffmexutils:libtiffWarning') ;
+            warning('off','imageio:tiffmexutils:libtiffWarning');            
             self.tiff_object_=Tiff(file_name,'r');
             frame=self.tiff_object_.read();
             if ndims(frame)>2  %#ok
@@ -48,6 +51,7 @@ classdef Video_file_normal_tif < handle
             warning(self.original_libtiff_warning_state_);
             warning(self.original_libtiff_error_as_warning_state_);
             warning(self.original_new_libtiff_warning_state_);
+            warning(self.original_libtiff_warning_4_state_);
             self.tiff_object_ = [] ;
         end
         

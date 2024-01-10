@@ -352,17 +352,15 @@ txt_clipboard= ...
 for k=1:n_y
   if Cyx_mag_probe(k)>Cyx_mag_thresh
     sig_str='y';
-    Cyx_phase_ci_lo_probe_disp=180/pi*wrap(Cyx_phase_ci_probe(k,1));
-    Cyx_phase_probe_disp=180/pi*wrap(Cyx_phase_probe(k));
-    Cyx_phase_ci_hi_probe_disp=180/pi*wrap(Cyx_phase_ci_probe(k,2));
   else
-    sig_str=' ';
-    % if coherency mag is not significant, don't report the phase
-    % this was in response to a specific request from Stefan
-    Cyx_phase_ci_lo_probe_disp=nan;
-    Cyx_phase_probe_disp=nan;
-    Cyx_phase_ci_hi_probe_disp=nan;
+    sig_str='n';
   end
+  % At one point, Stefan requested that insignificant phases be reported as nan.
+  % Backing that change out at the request of one of his lab members.  Hopefully
+  % the "n" in the "Significant?" column should make it clear...
+  Cyx_phase_ci_lo_probe_disp=180/pi*wrap(Cyx_phase_ci_probe(k,1));
+  Cyx_phase_probe_disp=180/pi*wrap(Cyx_phase_probe(k));
+  Cyx_phase_ci_hi_probe_disp=180/pi*wrap(Cyx_phase_ci_probe(k,2));
   txt_clipboard= ...
     [txt_clipboard ...
      sprintf(['%20s     %13.3f  %7.3f  %13.3f     ' ...
