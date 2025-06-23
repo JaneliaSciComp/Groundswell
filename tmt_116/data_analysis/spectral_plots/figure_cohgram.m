@@ -37,5 +37,5 @@ set(colorbar_image_h,'YData',[-180 +180]);
 set(colorbar_axes_h,'YLim',[-180 +180]);
 set(colorbar_image_h,'CData',reshape(cmap_phase,[256 1 3]));
 set(colorbar_axes_h,'YTick',[-180 -90 0 +90 +180]);
-set(gcf,'CurrentAxes',colorbar_axes_h);
-ylabel('Phase (deg), for |C|=1');
+% set(gcf,'CurrentAxes',colorbar_axes_h);
+ylabel(colorbar_axes_h, 'Phase (deg), for |C|=1');
