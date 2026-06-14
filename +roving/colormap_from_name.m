@@ -9,8 +9,7 @@ elseif strcmp(cmap_name,'red_blue') ,
   cmap=roving.red_blue(256);
 else
   % (Formerly substituted jet for parula on pre-R2014b MATLAB via verLessThan;
-  % removed -- parula exists in every supported release, and the verLessThan
-  % call breaks under R2026a via the tmt_116/basics/pad.m shadow of builtin pad.)
+  % removed -- parula exists in every supported release.)
   cmap=feval(cmap_name,256);
 end
 
