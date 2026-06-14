@@ -9,8 +9,12 @@ i_selected_old=self.i_selected;
 % which have axes have changed their selection state?
 i_changed=setxor(i_selected_old,i_selected_new);
 
-% cycle through changed axes and update the display
-for i=i_changed
+% cycle through changed axes and update the display.  Index by count rather
+% than "for i=i_changed": setxor returns a column when an operand is empty,
+% and "for" over a column would run just once over the whole vector instead of
+% once per changed axis.  Linear indexing is orientation-independent.
+for k=1:numel(i_changed)
+  i=i_changed(k);
   y_label_h=get(axes_hs(i),'ylabel');  % handle of text object
   if any(i==i_selected_new)
     set(y_label_h,'fontweight','bold');

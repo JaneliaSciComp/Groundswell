@@ -18,7 +18,7 @@ else
 
   % draw the new overlay for the current frame
   n_things=length(frame_overlay);
-  self.overlay_h=zeros(n_things,1);
+  self.overlay_h=gobjects(n_things,1);
   for i=1:n_things
     self.overlay_h(i)=frame_overlay{i}.draw_into_axes(self.image_axes_h);
   end

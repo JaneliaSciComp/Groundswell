@@ -1,8 +1,9 @@
 function choose_overlay_file_and_load(self)
 
+
 % throw up the dialog box
 [filename,pathname]= ...
-  uigetfile({'*.ovl' 'Overlay file (*.ovl)'}, ...
+  self.uigetfile({'*.ovl' 'Overlay file (*.ovl)'}, ...
             'Load Overlay from File...');
 if isnumeric(filename) || isnumeric(pathname)
   % this happens if user hits Cancel

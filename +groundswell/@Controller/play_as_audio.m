@@ -12,7 +12,7 @@ n_signals=sum(selected);
 if n_signals==0
   return;
 elseif n_signals>1
-  errordlg('Can only play one signal as audio at a time.',...
+  self.errordlg('Can only play one signal as audio at a time.',...
            'Error');
   return;
 end
@@ -50,7 +50,7 @@ end
 % Can't play if too high-frequency
 fs_max=1e6;  % Hz
 if fs>fs_max
-  errordlg('Can only play signals sampled at < 1 MHz.',...
+  self.errordlg('Can only play signals sampled at < 1 MHz.',...
            'Sampling rate too high');
   return;
 end
@@ -65,12 +65,12 @@ if T>T_warn
              'cannot be stopped.  Play anyway?'], ...
             T);
   if ismac()        
-    button=questdlg(question_string, ...
+    button=self.questdlg(question_string, ...
                     'Really play?', ...
                     'Cancel','Play', ...
                     'Play');
   else
-    button=questdlg(question_string, ...
+    button=self.questdlg(question_string, ...
                     'Really play?', ...
                     'Play','Cancel', ...
                     'Play');
@@ -104,9 +104,11 @@ if data_max>0
 end
 
 % play the sound, scaled
-player=audioplayer(data,fs);
+player=self.audioplayer(data,fs);
 %tic
-player.playblocking();
+if ~isempty(player)  % empty in test mode -- self.audioplayer() recorded it instead
+  player.playblocking();
+end
 %toc;
 
 % % block while sound plays

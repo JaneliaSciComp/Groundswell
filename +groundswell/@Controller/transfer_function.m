@@ -1,5 +1,6 @@
 function transfer_function(gsmc)
 
+
 % get stuff we'll need
 groundswell_figure_h=gsmc.view.fig_h;
 i_selected=gsmc.view.i_selected;
@@ -10,7 +11,7 @@ names=gsmc.model.names;
 % are there exactly two signals selected?
 n_selected=length(i_selected);
 if n_selected~=2
-  errordlg('Can only calculate transfer function between two signals at a time.',...
+  gsmc.errordlg('Can only calculate transfer function between two signals at a time.',...
            'Error');
   return;
 end
@@ -35,7 +36,7 @@ dt=(t(end)-t(1))/(length(t)-1);
 fs=1/dt;
 
 % throw up the dialog box
-param_str=inputdlg({ 'Number of windows:' , ...
+param_str=gsmc.inputdlg({ 'Number of windows:' , ...
                      'Time-bandwidth product (NW):' , ...
                      'Number of tapers:' , ...
                      'Maximum frequency (Hz):' ,...
@@ -69,56 +70,56 @@ conf_level_str=param_str{6};
 % n_windows
 n_windows=str2double(n_windows_str);
 if isempty(n_windows)
-  errordlg('Number of windows not valid','Error');
+  gsmc.errordlg('Number of windows not valid','Error');
   return;
 end
 if n_windows~=round(n_windows)
-  errordlg('Number of windows must be an integer','Error');
+  gsmc.errordlg('Number of windows must be an integer','Error');
   return;
 end
 if n_windows<1
-  errordlg('Number of windows must be >= 1','Error');
+  gsmc.errordlg('Number of windows must be >= 1','Error');
   return;
 end
 
 % NW
 NW=str2double(NW_str);
 if isempty(NW)
-  errordlg('Time-bandwidth product (NW) not valid','Error');
+  gsmc.errordlg('Time-bandwidth product (NW) not valid','Error');
   return;
 end
 if NW<1
-  errordlg('Time-bandwidth product (NW) must be >= 1','Error');
+  gsmc.errordlg('Time-bandwidth product (NW) must be >= 1','Error');
   return;
 end
 
 % K
 K=str2double(K_str);
 if isempty(K)
-  errordlg('Number of tapers not valid','Error');
+  gsmc.errordlg('Number of tapers not valid','Error');
   return;
 end
 if K~=round(K)
-  errordlg('Number of tapers must be an integer','Error');
+  gsmc.errordlg('Number of tapers must be an integer','Error');
   return;
 end
 if K>2*NW-1
-  errordlg('Number of tapers must be <= 2*NW-1','Error');
+  gsmc.errordlg('Number of tapers must be <= 2*NW-1','Error');
   return;
 end
 
 % f_max_keep
 f_max_keep=str2double(f_max_keep_str);
 if isempty(f_max_keep)
-  errordlg('Maximum frequency not valid','Error');
+  gsmc.errordlg('Maximum frequency not valid','Error');
   return;
 end
 if f_max_keep<0
-  errordlg('Maximum frequency must be >= 0','Error');
+  gsmc.errordlg('Maximum frequency must be >= 0','Error');
   return;
 end
 if f_max_keep>fs/2
-  errordlg(sprintf(['Maximum frequency must be <= half the ' ...
+  gsmc.errordlg(sprintf(['Maximum frequency must be <= half the ' ...
                     'sampling frequency (%0.3f Hz)'],fs),...
            'Error');
   return;
@@ -127,30 +128,30 @@ end
 % p_FFT_extra
 p_FFT_extra=str2double(p_FFT_extra_str);
 if isempty(p_FFT_extra)
-  errordlg('Extra FFT powers of 2 not valid','Error');
+  gsmc.errordlg('Extra FFT powers of 2 not valid','Error');
   return;
 end
 if p_FFT_extra~=round(p_FFT_extra)
-  errordlg('Extra FFT powers of 2 must be an integer','Error');
+  gsmc.errordlg('Extra FFT powers of 2 must be an integer','Error');
   return;
 end
 if p_FFT_extra<0
-  errordlg('Extra FFT powers of 2 must be >= 0','Error');
+  gsmc.errordlg('Extra FFT powers of 2 must be >= 0','Error');
   return;
 end
 
 % conf_level
 conf_level=str2double(conf_level_str);
 if isempty(conf_level)
-  errordlg('Confidence level not valid','Error');
+  gsmc.errordlg('Confidence level not valid','Error');
   return;
 end
 if conf_level<0
-  errordlg('Confidence level must be >= 0','Error');
+  gsmc.errordlg('Confidence level must be >= 0','Error');
   return;
 end
 if conf_level>=1
-  errordlg('Confidence level must be < 1',...
+  gsmc.errordlg('Confidence level must be < 1',...
            'Error');
   return;
 end

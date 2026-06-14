@@ -7,7 +7,7 @@ try
   self.model.export_to_tcs_file(file_name_abs);
 catch excp
   self.view.unhourglass();
-  uiwait(errordlg(excp.message,'Error','modal'));
+  uiwait(self.errordlg(excp.message,'Error','modal'));
   %rethrow(excp);
   return
 end

@@ -12,6 +12,7 @@ tl_view_new_want_srt=sort(tl_view_new_want);
 tl=self.model.tl;
 t0=tl(1);
 tf=tl(2);
+tl_view_new_want_srt_constrained=zeros(1,2);
 tl_view_new_want_srt_constrained(1)=...
   min(max(tl_view_new_want_srt(1),t0),tf);
 tl_view_new_want_srt_constrained(2)=...

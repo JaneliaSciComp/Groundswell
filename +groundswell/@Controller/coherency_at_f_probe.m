@@ -1,5 +1,6 @@
 function coherency_at_f_probe(self)
 
+
 % get stuff we'll need
 i_selected=self.view.i_selected;
 t=self.model.t;
@@ -9,7 +10,7 @@ names=self.model.names;
 % are there at least two signals selected?
 n_selected=length(i_selected);
 if n_selected<2
-  errordlg('Can only calculate coherency between two or more signals.',...
+  self.errordlg('Can only calculate coherency between two or more signals.',...
            'Error');
   return;
 end
@@ -39,7 +40,7 @@ dt=(t(end)-t(1))/(length(t)-1);
 fs=1/dt;
 
 % throw up the dialog box
-param_str=inputdlg({ 'Number of windows:' , ...
+param_str=self.inputdlg({ 'Number of windows:' , ...
                      'Time-bandwidth product (NW):' , ...
                      'Number of tapers:' , ...
                      'Probe frequency (Hz):' ,...
@@ -76,56 +77,56 @@ alpha_thresh_str=param_str{7};
 % n_windows
 n_windows=str2double(n_windows_str);
 if isempty(n_windows)
-  errordlg('Number of windows not valid','Error');
+  self.errordlg('Number of windows not valid','Error');
   return;
 end
 if n_windows~=round(n_windows)
-  errordlg('Number of windows must be an integer','Error');
+  self.errordlg('Number of windows must be an integer','Error');
   return;
 end
 if n_windows<1
-  errordlg('Number of windows must be >= 1','Error');
+  self.errordlg('Number of windows must be >= 1','Error');
   return;
 end
 
 % NW
 NW=str2double(NW_str);
 if isempty(NW)
-  errordlg('Time-bandwidth product (NW) not valid','Error');
+  self.errordlg('Time-bandwidth product (NW) not valid','Error');
   return;
 end
 if NW<1
-  errordlg('Time-bandwidth product (NW) must be >= 1','Error');
+  self.errordlg('Time-bandwidth product (NW) must be >= 1','Error');
   return;
 end
 
 % K
 K=str2double(K_str);
 if isempty(K)
-  errordlg('Number of tapers not valid','Error');
+  self.errordlg('Number of tapers not valid','Error');
   return;
 end
 if K~=round(K)
-  errordlg('Number of tapers must be an integer','Error');
+  self.errordlg('Number of tapers must be an integer','Error');
   return;
 end
 if K>2*NW-1
-  errordlg('Number of tapers must be <= 2*NW-1','Error');
+  self.errordlg('Number of tapers must be <= 2*NW-1','Error');
   return;
 end
 
 % f_probe
 f_probe=str2double(f_probe_str);
 if isempty(f_probe)
-  errordlg('Probe frequency not valid','Error');
+  self.errordlg('Probe frequency not valid','Error');
   return;
 end
 if f_probe<0
-  errordlg('Probe frequency must be >= 0','Error');
+  self.errordlg('Probe frequency must be >= 0','Error');
   return;
 end
 if f_probe>fs/2
-  errordlg(sprintf(['Probe frequency must be <= half the ' ...
+  self.errordlg(sprintf(['Probe frequency must be <= half the ' ...
                     'sampling frequency (%0.3f Hz)'],fs),...
            'Error');
   return;
@@ -134,30 +135,30 @@ end
 % p_FFT_extra
 p_FFT_extra=str2double(p_FFT_extra_str);
 if isempty(p_FFT_extra)
-  errordlg('Extra FFT powers of 2 not valid','Error');
+  self.errordlg('Extra FFT powers of 2 not valid','Error');
   return;
 end
 if p_FFT_extra~=round(p_FFT_extra)
-  errordlg('Extra FFT powers of 2 must be an integer','Error');
+  self.errordlg('Extra FFT powers of 2 must be an integer','Error');
   return;
 end
 if p_FFT_extra<0
-  errordlg('Extra FFT powers of 2 must be >= 0','Error');
+  self.errordlg('Extra FFT powers of 2 must be >= 0','Error');
   return;
 end
 
 % conf_level
 conf_level=str2double(conf_level_str);
 if isempty(conf_level)
-  errordlg('Confidence level not valid','Error');
+  self.errordlg('Confidence level not valid','Error');
   return;
 end
 if conf_level<0
-  errordlg('Confidence level must be >= 0','Error');
+  self.errordlg('Confidence level must be >= 0','Error');
   return;
 end
 if conf_level>=1
-  errordlg('Confidence level must be < 1',...
+  self.errordlg('Confidence level must be < 1',...
            'Error');
   return;
 end
@@ -165,15 +166,15 @@ end
 % alpha_thresh
 alpha_thresh=str2double(alpha_thresh_str);
 if isempty(alpha_thresh)
-  errordlg('Alpha of threshold not valid','Error');
+  self.errordlg('Alpha of threshold not valid','Error');
   return;
 end
 if alpha_thresh<0
-  errordlg('Alpha of threshold must be >= 0','Error');
+  self.errordlg('Alpha of threshold must be >= 0','Error');
   return;
 end
 if alpha_thresh>1
-  errordlg('Alpha of threshold must be <= 1',...
+  self.errordlg('Alpha of threshold must be <= 1',...
            'Error');
   return;
 end

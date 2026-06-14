@@ -21,7 +21,7 @@ try
                             self.model.units);
 catch  %#ok
   self.view.unhourglass();
-  errordlg(sprintf('Unable to save as file %s',filename_local));
+  self.errordlg(sprintf('Unable to save as file %s',filename_local));
   return;
 end
 

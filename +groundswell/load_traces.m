@@ -48,7 +48,7 @@ elseif strcmp(ext,'.tcs')
   clear t_each data_each;
 elseif strcmp(ext,'.wav')
   try
-    [data,fs]=wavread(filename);
+    [data,fs]=audioread(filename);
   catch exception
     %self.view.unhourglass();
     errordlg(sprintf('Unable to open file %s: %s',filename_local,exception.message));  

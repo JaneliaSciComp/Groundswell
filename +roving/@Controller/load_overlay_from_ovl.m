@@ -10,7 +10,7 @@ import roving.Overlay_file_reader;
 full_filename=strcat(pathname,filename);
 self.model.overlay_file=Overlay_file_reader(full_filename);
 % if (fid == -1)
-%   errordlg(sprintf('Unable to open file %s',filename),...
+%   self.errordlg(sprintf('Unable to open file %s',filename),...
 %            'File Error');
 %   return;
 % end

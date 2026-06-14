@@ -36,7 +36,7 @@ classdef Video_file_imagej_jumbo_tif < handle
             self.n_col_ = tiff_header.height ;            
             self.rate_ = nan ;  % Hz, NaN signifies frame rate is unknown
             self.header_length_ = tiff_header.StripOffsets ;
-            self.pels_per_frame_ = self.n_row * self.n_col ;
+            self.pels_per_frame_ = self.n_row() * self.n_col() ;
             self.bytes_per_pel_ = ceil(self.bits_per_pel_/8) ;    
             if self.bytes_per_pel_==2 ,
                 self.pixel_class_name_ = 'uint16' ;

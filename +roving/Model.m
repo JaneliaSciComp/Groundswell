@@ -57,7 +57,7 @@ classdef Model < handle
       if isempty(self.file)
         n_row=[];
       else
-        n_row=self.file.n_row;
+        n_row=self.file.n_row();
       end
     end
     
@@ -66,7 +66,7 @@ classdef Model < handle
       if isempty(self.file)
         n_col=[];
       else
-        n_col=self.file.n_col;
+        n_col=self.file.n_col();
       end
     end
     
@@ -75,7 +75,7 @@ classdef Model < handle
       if isempty(self.file)
         n_frame=[];
       else
-        n_frame=self.file.n_frame;
+        n_frame=self.file.n_frame();
       end
     end
     
@@ -239,10 +239,10 @@ classdef Model < handle
     
     % ---------------------------------------------------------------------
     function [d_min,d_max]=pixel_data_type_min_max(self)
-      if self.file.bits_per_pel==8
+      if self.file.bits_per_pel()==8
         d_min=0;
         d_max=255;
-      elseif self.file.bits_per_pel==16
+      elseif self.file.bits_per_pel()==16
         d_min=0;
         d_max=65535;
       else
@@ -293,7 +293,7 @@ classdef Model < handle
       % OK, now actually store the data in ourselves
       % make up a t0, get dt
       self.t0=0;
-      self.dt=file.dt;  % s
+      self.dt=file.dt();  % s
 
       % set the model
       self.file=file;

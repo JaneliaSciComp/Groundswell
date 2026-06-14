@@ -13,7 +13,7 @@ n_signals=sum(selected);
 if n_signals==0
   return;
 elseif n_signals>1
-  errordlg('Can only count TTL edges on one signal at a time.',...
+  self.errordlg('Can only count TTL edges on one signal at a time.',...
            'Error');
   return;
 end
@@ -44,6 +44,6 @@ output_str=sprintf(['Rising edges: %d\n' ...
 self.view.unhourglass()
 
 % Display the message dialog box
-msgbox(output_str,sprintf('TTL Edges of signal %s',name));
+self.msgbox(output_str,sprintf('TTL Edges of signal %s',name));
 
 end

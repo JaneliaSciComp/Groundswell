@@ -2,6 +2,7 @@ function [sTags] = tiffread31_readtags(TIF, HEADER, vnFrame)
 
 %% set defaults values:
 
+opt = struct();
 opt.ReadUnknownTags = true;
 opt.ConsolidateStrips = true;
 opt.SimilarImages = false;
@@ -383,6 +384,7 @@ end
       % additional data is stored in the file
       
       R.MagicNumber          = sprintf('0x%09X',fread(TIF.file, 1, 'uint32', TIF.ByteOrder));
+      S = struct();
       S.StructureSize        = fread(TIF.file, 1, 'uint32', TIF.ByteOrder);
       R.DimensionX           = fread(TIF.file, 1, 'uint32', TIF.ByteOrder);
       R.DimensionY           = fread(TIF.file, 1, 'uint32', TIF.ByteOrder);

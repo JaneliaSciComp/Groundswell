@@ -65,52 +65,26 @@ if r~=r_new || force_resample
     t_sub=t(1:r:end);
     n_t_sub=length(t_sub);
 
-    % try doing this by hand, such that it gets compiled
-    % this is faster than blkproc(), and faster than the original
-    % by-hand version, presumably because this version doesn't do a
-    % "if mod(i,r)==0" for each element of data
-    %disp('by hand, v2');
-    %tic
+    % Vectorized min/max decimation.  The original hand-unrolled this as a
+    % per-sample loop so MATLAB's JIT would compile it; the reshape form below
+    % is numerically identical but, being array ops, also runs fast in the
+    % Python port (where a per-element loop over millions of samples is slow).
+    % The first (n_t_sub-1) blocks hold r samples each; the last block holds
+    % whatever remains.
+    n_full=n_t_sub-1;
+    n_t_left=n_t-r*n_full;
     data_sub_max=zeros(n_t_sub,n_chan,n_sweeps);
     data_sub_min=zeros(n_t_sub,n_chan,n_sweeps);
     for k=1:n_sweeps
       for j=1:n_chan
-        i=1;
-        for i_sub=1:(n_t_sub-1)
-          mx=-inf; 
-          mn=+inf;
-          for i_offset=1:r
-            d=data(i,j,k);
-            if d>mx
-              mx=d;
-            end
-            if d<mn
-              mn=d;
-            end
-            i=i+1;
-          end
-          data_sub_max(i_sub,j,k)=mx;
-          data_sub_min(i_sub,j,k)=mn;
-        end
-        % the last block may have less than r elements
-        mx=-inf;
-        mn=+inf;
-        n_t_left=n_t-r*(n_t_sub-1);
-        for i_offset=1:n_t_left
-          d=data(i,j,k);
-          if d>mx
-            mx=d;
-          end
-          if d<mn
-            mn=d;
-          end
-          i=i+1;
-        end
-        data_sub_max(n_t_sub,j,k)=mx;
-        data_sub_min(n_t_sub,j,k)=mn;
+        block=reshape(data(1:r*n_full,j,k),[r n_full]);
+        data_sub_max(1:n_full,j,k)=max(block,[],1)';
+        data_sub_min(1:n_full,j,k)=min(block,[],1)';
+        tail=data(r*n_full+1:n_t,j,k);
+        data_sub_max(n_t_sub,j,k)=max(tail);
+        data_sub_min(n_t_sub,j,k)=min(tail);
       end
-    end      
-    %toc  
+    end
     
     self.r=r;
     self.t_sub=t_sub;

@@ -8,7 +8,7 @@ n_o=length(roi_label);
                             
 % make up some optical units
 units_o=cell(n_o,1);
-unit_o{:}='';
+units_o(:)={''};
 
 % write the stuff
 fid=open_tcs_for_writing(file_name);

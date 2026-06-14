@@ -1,5 +1,6 @@
 function save_rois_to_file(self)
 
+
 % get the ROI info from the figure state
 n_roi=length(self.model.roi);
 r_border={self.model.roi.border}';
@@ -9,7 +10,7 @@ label={self.model.roi.label}';
 
 % throw up the dialog box
 [filename,pathname]= ...
-  uiputfile({'*.rpb' 'ROI polygonal boundary file (*.rpb)'}, ...
+  self.uiputfile({'*.rpb' 'ROI polygonal boundary file (*.rpb)'}, ...
             'Save ROIs to File...');
 if isnumeric(filename) || isnumeric(pathname)
   % this happens if user hits Cancel
@@ -24,7 +25,7 @@ full_filename=strcat(pathname,filename);
 % open the file for writing
 fid=fopen(full_filename,'w','ieee-be');
 if (fid == -1)
-  errordlg(sprintf('Unable to open file %s',filename),...
+  self.errordlg(sprintf('Unable to open file %s',filename),...
            'File Error');
   return;
 end
@@ -32,7 +33,7 @@ end
 % write the number of ROIs
 count=fwrite(fid,n_roi,'uint32');
 if (count ~= 1)
-  errordlg(sprintf('Error writing ROIs to file %s',filename),...
+  self.errordlg(sprintf('Error writing ROIs to file %s',filename),...
            'File Error');
   fclose(fid);
   delete(filename);
@@ -47,7 +48,7 @@ for j=1:n_roi
   fwrite(fid,n_chars,'uint32');
   count=fwrite(fid,label_string,'uchar');
   if (count ~= n_chars)
-    errordlg(sprintf('Error writing ROIs to file %s',filename),...
+    self.errordlg(sprintf('Error writing ROIs to file %s',filename),...
              'File Error');
     fclose(fid);
     delete(filename);
@@ -60,7 +61,7 @@ for j=1:n_roi
   fwrite(fid,n_vertices,'uint32');
   count=fwrite(fid,vl,'float32');
   if (count ~= 2*n_vertices)
-    errordlg(sprintf('Error writing ROIs to file %s',filename),...
+    self.errordlg(sprintf('Error writing ROIs to file %s',filename),...
              'File Error');
     fclose(fid);
     delete(filename);
