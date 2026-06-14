@@ -1,4 +1,4 @@
-function f(l,h)
+function yl(l,h)
 
 if l<=h
   ylim([l h]);

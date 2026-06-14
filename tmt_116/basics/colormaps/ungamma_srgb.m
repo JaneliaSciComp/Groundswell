@@ -1,4 +1,4 @@
-function sRGB = f(RGB)
+function sRGB = ungamma_srgb(RGB)
 
 % this gamma-corrects the linear RGB values, thus converting them to
 % (nonlinear) sRGB

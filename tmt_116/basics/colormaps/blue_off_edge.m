@@ -1,4 +1,4 @@
-function color_map=f(L,x)
+function color_map=blue_off_edge(L,x)
 
 % L is a scalar, x is a col vector
 

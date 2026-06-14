@@ -1,4 +1,4 @@
-function clr=f(x)
+function clr=l75_border_of_x(x)
 
 %  x is a col vector
 

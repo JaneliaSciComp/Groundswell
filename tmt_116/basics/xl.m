@@ -1,4 +1,4 @@
-function f(l,h)
+function xl(l,h)
 
 if l<=h
   xlim([l h]);

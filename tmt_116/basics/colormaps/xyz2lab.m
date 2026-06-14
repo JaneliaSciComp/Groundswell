@@ -1,4 +1,4 @@
-function rLab = f(rXYZ)
+function rLab = xyz2lab(rXYZ)
 
 % converts from (relative) XYZ to (relative) Lab
 

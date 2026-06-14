@@ -1,4 +1,4 @@
-function [ha,va]=f(theta)
+function [ha,va]=angle_to_alignment(theta)
   
 zone=mod(round(theta*4/pi),8);
 switch zone

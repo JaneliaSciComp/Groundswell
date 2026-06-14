@@ -1,4 +1,4 @@
-function sRGB=f(L,x)
+function sRGB=blue_on_edge(L,x)
 
 % L is a scalar, x is a col vector
 

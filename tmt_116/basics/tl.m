@@ -1,4 +1,4 @@
-function f(l,h)
+function tl(l,h)
 
 kid_hs=get(gcf,'Children')';
 for kid_h=kid_hs

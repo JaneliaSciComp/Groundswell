@@ -1,4 +1,4 @@
-function cmap=f(n_colors)
+function cmap=l75_border(n_colors)
 
 % generate a non-smooth colormap on a very fine grid
 % calculate the path length, and from that get the phase for each

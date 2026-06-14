@@ -1,4 +1,4 @@
-function cmap = f(n_colors,hue0,value)
+function cmap = distinct_hues_simple(n_colors,hue0,value)
 
 % this creates a sequence of colors to be used for traces
 % the idea is that subsequent colors are quite distinct

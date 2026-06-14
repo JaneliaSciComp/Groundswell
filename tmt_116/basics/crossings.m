@@ -1,4 +1,4 @@
-function crossings=f(x,x_star)
+function crossings=crossings(x,x_star)
 
 % this function returns an array which is nonzero when x crosses x_star.  
 % whether a crossing has occured is determined by looking at whether

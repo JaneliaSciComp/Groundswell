@@ -1,4 +1,4 @@
-function rXYZ = f(rLab)
+function rXYZ = lab2xyz(rLab)
 
 % I got this code from
 %   http://www.easyrgb.com/

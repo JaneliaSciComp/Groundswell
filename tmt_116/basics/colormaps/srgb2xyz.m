@@ -1,4 +1,4 @@
-function rXYZ = f(sRGB)
+function rXYZ = srgb2xyz(sRGB)
 
 % sRGB triples should be in cols
 

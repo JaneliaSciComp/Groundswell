@@ -1,4 +1,4 @@
-function rev_n=f(n)
+function rev_n=bit_reverse(n)
 
 % i should be a uint8
 % this is probably hecka slow

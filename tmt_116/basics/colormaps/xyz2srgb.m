@@ -1,4 +1,4 @@
-function sRGB = f(rXYZ)
+function sRGB = xyz2srgb(rXYZ)
 
 % conversion from (relative) CIE XYZ to sRGB
 % in-gamut sRGB values are reals on [0,1]

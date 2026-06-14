@@ -1,4 +1,4 @@
-function [edges,n_highs,n_lows] = f(signal)
+function [edges,n_highs,n_lows] = ttl_edges(signal)
 
 % signal is a logical signal of some kind, TTL or whatever
 % edges is an array which is

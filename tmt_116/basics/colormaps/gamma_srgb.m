@@ -1,4 +1,4 @@
-function RGB = f(sRGB)
+function RGB = gamma_srgb(sRGB)
 
 % convert the (nonlinear) sRGB values to linear RGB values
 low=(sRGB<=0.03928);
