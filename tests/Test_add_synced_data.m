@@ -1,5 +1,5 @@
-classdef TestAddSyncedData < AppTestCase
-% TestAddSyncedData  Test the File > Add synched data... menu item.
+classdef Test_add_synced_data < App_test_case
+% Test_add_synced_data  Test the File > Add synched data... menu item.
 %
 % Scenario (non-frame-transfer): an electrophysiology .tcs holds, among its
 % signals, a camera-shutter TTL ("camera_ex") with one pulse per acquired

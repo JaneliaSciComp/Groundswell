@@ -1,5 +1,5 @@
-classdef TestAppOpen < AppTestCase
-% TestAppOpen  Back-port of pygroundswell/tests/test_app_open.py.
+classdef Test_app_open < App_test_case
+% Test_app_open  Back-port of pygroundswell/tests/test_app_open.py.
 %
 % Opens a .tcs through the real File > Open menu callback and exercises
 % zoom/scroll, X-axis units + Set Range, channel selection, Y-axis range

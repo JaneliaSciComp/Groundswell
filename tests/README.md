@@ -13,7 +13,7 @@ available.  From the `groundswell/` directory:
 ```matlab
 modpath();                          % put the app + toolbox on the path
 results = runtests('tests');        % whole suite
-results = runtests('tests/TestAppOpen.m')
+results = runtests('tests/Test_app_open.m')
 ```
 
 or headless from a shell:
@@ -36,32 +36,32 @@ unchanged.  A test sets `c.is_in_test_mode = true` and then:
 - reads the text of any `errordlg`/`warndlg`/`msgbox` from `c.dialog_messages`;
 - reads anything sent to `audioplayer` from `c.played_audio`.
 
-`AppTestCase` provides the shared fixtures and helpers (`openViaMenu`,
+`App_test_case` provides the shared fixtures and helpers (`openViaMenu`,
 `fileResponse`, `trigger`, `fireButtonDown`, `selectChannels`, …).
 
 The **roving** `@Controller` works the same way (`is_in_test_mode` +
 `dialog_responses`/`dialog_messages`; its dialogs are uigetfile / uiputfile /
-inputdlg / errordlg); `RovingTestCase` provides the matching fixtures.
+inputdlg / errordlg); `Roving_test_case` provides the matching fixtures.
 
 ## Files
 
-- `AppTestCase.m` — shared base fixture (path setup, figure cleanup, helpers).
-- `TestAppOpen.m` — open a `.tcs`, zoom/scroll, X-units + Set Range, channel
+- `App_test_case.m` — shared base fixture (path setup, figure cleanup, helpers).
+- `Test_app_open.m` — open a `.tcs`, zoom/scroll, X-units + Set Range, channel
   selection, Y-range optimisation + Set Range, mutations.
-- `TestMutateSave.m` — data mutations (dx/x, change-fs, center), Save/Save-As,
+- `Test_mutate_save.m` — data mutations (dx/x, change-fs, center), Save/Save-As,
   file lifecycle (close/revert/quit), and the Import paths (wav/text/abf/tcs).
-- `TestAnalysis.m` — the Analysis menu: power spectrum, spectrogram, coherency,
+- `Test_analysis.m` — the Analysis menu: power spectrum, spectrogram, coherency,
   coherency-at-frequency, coherogram, transfer function (run + draw, parameter
   rejection, mode menus), plus count-TTL-edges and play-as-audio.
-- `TestAddSyncedData.m` — File ▸ Add synched data... and ...(FT): splice ROI
+- `Test_add_synced_data.m` — File ▸ Add synched data... and ...(FT): splice ROI
   signals from a second .tcs into the e-phys model, time-aligned via the
   camera-shutter TTL (the FT variant answers the frame-transfer confirmation).
-- `TestWrapPoint.m` — break_at_wrap_points (wrapped-phase splitting).
+- `Test_wrap_point.m` — break_at_wrap_points (wrapped-phase splitting).
 - `FakeAudioPlayer.m` — a no-op stand-in for audioplayer used by the audio test.
-- `RovingTestCase.m` — shared base fixture for the Roving (imaging/ROI) app.
-- `TestRovingApp.m` — Roving: launch, open TIFF / ImageJ-jumbo / MJ2 video,
+- `Roving_test_case.m` — shared base fixture for the Roving (imaging/ROI) app.
+- `Test_roving_app.m` — Roving: launch, open TIFF / ImageJ-jumbo / MJ2 video,
   mode buttons, every menu item, every button/edit.
-- `TestRovingOverlay.m` — Roving File ▸ Overlay ▸ Load overlay...: synthesize a
+- `Test_roving_overlay.m` — Roving File ▸ Overlay ▸ Load overlay...: synthesize a
   .ovl (via the app's Overlay_file_writer) and check its lines draw into the
   main axes.
 

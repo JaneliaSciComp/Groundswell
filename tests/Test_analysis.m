@@ -1,5 +1,5 @@
-classdef TestAnalysis < AppTestCase
-% TestAnalysis  Back-port of the Analysis section of
+classdef Test_analysis < App_test_case
+% Test_analysis  Back-port of the Analysis section of
 % pygroundswell/tests/test_mutate_save_import.py: the Power Spectrum,
 % Spectrogram, Coherency, Coherency-at-frequency, Coherogram, Transfer
 % Function, Count TTL Edges and Play-as-Audio menu items.

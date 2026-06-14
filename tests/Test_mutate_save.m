@@ -1,9 +1,9 @@
-classdef TestMutateSave < AppTestCase
-% TestMutateSave  Back-port of pygroundswell/tests/test_mutate_save_import.py
+classdef Test_mutate_save < App_test_case
+% Test_mutate_save  Back-port of pygroundswell/tests/test_mutate_save_import.py
 % (the Mutation, Save/Save-As, file-lifecycle, and Import sections).
 %
 % The Analysis section of that Python file is ported separately
-% (TestAnalysis), because its parameter dialogs live in free functions that
+% (Test_analysis), because its parameter dialogs live in free functions that
 % the Controller dialog seam does not reach.
 %
 % Adaptations from the Python original:

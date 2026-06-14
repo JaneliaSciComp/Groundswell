@@ -1,5 +1,5 @@
-classdef TestWrapPoint < AppTestCase
-% TestWrapPoint  Back-port of the WrapPointTests in
+classdef Test_wrap_point < App_test_case
+% Test_wrap_point  Back-port of the WrapPointTests in
 % pygroundswell/tests/test_mutate_save_import.py.
 %
 % break_at_wrap_points (used to plot wrapped phase in Coherency) must split a

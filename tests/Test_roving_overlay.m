@@ -1,5 +1,5 @@
-classdef TestRovingOverlay < RovingTestCase
-% TestRovingOverlay  File > Overlay > Load overlay...
+classdef Test_roving_overlay < Roving_test_case
+% Test_roving_overlay  File > Overlay > Load overlay...
 %
 % Synthesise a .ovl overlay file (using the app's own Overlay_file_writer) whose
 % line objects span the full 1..256 image extent, open the test TIFF in Roving,

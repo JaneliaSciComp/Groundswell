@@ -1,5 +1,5 @@
-classdef AppTestCase < matlab.unittest.TestCase
-% AppTestCase  Shared fixtures for the groundswell app test suite.
+classdef App_test_case < matlab.unittest.TestCase
+% App_test_case  Shared fixtures for the groundswell app test suite.
 %
 % These tests are a back-port of the Python end-to-end tests in
 % pygroundswell/tests/ (test_app_open.py, ...).  They drive the *real*
@@ -13,7 +13,7 @@ classdef AppTestCase < matlab.unittest.TestCase
 %
 % Run from the groundswell/ directory:
 %   results = runtests('tests');            % whole suite
-%   results = runtests('tests/TestAppOpen.m')
+%   results = runtests('tests/Test_app_open.m')
 
   properties
     TestFile          % absolute path to a valid 22-channel test.tcs (or '')

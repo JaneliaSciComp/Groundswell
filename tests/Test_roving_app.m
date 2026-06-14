@@ -1,5 +1,5 @@
-classdef TestRovingApp < RovingTestCase
-% TestRovingApp  Back-port of pygroundswell/tests/test_roving_app.py: the
+classdef Test_roving_app < Roving_test_case
+% Test_roving_app  Back-port of pygroundswell/tests/test_roving_app.py: the
 % Roving imaging/ROI viewer launches non-blank, opens TIFF / ImageJ-jumbo /
 % MJ2 videos through the real File > Open video menu, and every menu item and
 % button can be actuated through its real callback.
