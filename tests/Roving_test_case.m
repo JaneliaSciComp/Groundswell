@@ -1,7 +1,7 @@
 classdef Roving_test_case < matlab.unittest.TestCase
 % Roving_test_case  Shared fixtures for the Roving (imaging/ROI) app tests,
-% back-ported from pygroundswell/tests/test_roving_app.py.  Like the
-% groundswell App_test_case, these drive the real roving.Controller / View
+% back-ported from pygroundswell/tests/test_roving_app.py.  Like
+% Groundswell_test_case, these drive the real roving.Controller / View
 % through real menu/button callbacks.  Dialogs are handled by the Controller's
 % test mode: set c.is_in_test_mode = true, queue what the input dialogs should
 % return in c.dialog_responses, and read any errordlg text from

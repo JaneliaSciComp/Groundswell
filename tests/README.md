@@ -36,7 +36,7 @@ unchanged.  A test sets `c.is_in_test_mode = true` and then:
 - reads the text of any `errordlg`/`warndlg`/`msgbox` from `c.dialog_messages`;
 - reads anything sent to `audioplayer` from `c.played_audio`.
 
-`App_test_case` provides the shared fixtures and helpers (`openViaMenu`,
+`Groundswell_test_case` provides the shared fixtures and helpers (`openViaMenu`,
 `fileResponse`, `trigger`, `fireButtonDown`, `selectChannels`, …).
 
 The **roving** `@Controller` works the same way (`is_in_test_mode` +
@@ -45,7 +45,7 @@ inputdlg / errordlg); `Roving_test_case` provides the matching fixtures.
 
 ## Files
 
-- `App_test_case.m` — shared base fixture (path setup, figure cleanup, helpers).
+- `Groundswell_test_case.m` — shared base fixture (path setup, figure cleanup, helpers).
 - `Test_app_open.m` — open a `.tcs`, zoom/scroll, X-units + Set Range, channel
   selection, Y-range optimisation + Set Range, mutations.
 - `Test_mutate_save.m` — data mutations (dx/x, change-fs, center), Save/Save-As,

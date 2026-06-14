@@ -1,4 +1,4 @@
-classdef Test_analysis < App_test_case
+classdef Test_analysis < Groundswell_test_case
 % Test_analysis  Back-port of the Analysis section of
 % pygroundswell/tests/test_mutate_save_import.py: the Power Spectrum,
 % Spectrogram, Coherency, Coherency-at-frequency, Coherogram, Transfer

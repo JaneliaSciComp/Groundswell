@@ -1,4 +1,4 @@
-classdef Test_app_open < App_test_case
+classdef Test_app_open < Groundswell_test_case
 % Test_app_open  Back-port of pygroundswell/tests/test_app_open.py.
 %
 % Opens a .tcs through the real File > Open menu callback and exercises

@@ -1,5 +1,5 @@
-classdef App_test_case < matlab.unittest.TestCase
-% App_test_case  Shared fixtures for the groundswell app test suite.
+classdef Groundswell_test_case < matlab.unittest.TestCase
+% Groundswell_test_case  Shared fixtures for the groundswell app test suite.
 %
 % These tests are a back-port of the Python end-to-end tests in
 % pygroundswell/tests/ (test_app_open.py, ...).  They drive the *real*

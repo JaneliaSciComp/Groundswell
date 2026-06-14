@@ -1,4 +1,4 @@
-classdef Test_add_synced_data < App_test_case
+classdef Test_add_synced_data < Groundswell_test_case
 % Test_add_synced_data  Test the File > Add synched data... menu item.
 %
 % Scenario (non-frame-transfer): an electrophysiology .tcs holds, among its
