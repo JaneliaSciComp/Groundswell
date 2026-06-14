@@ -26,10 +26,13 @@ classdef AppTestCase < matlab.unittest.TestCase
       here = fileparts(mfilename('fullpath'));   % groundswell/tests
       repo = fileparts(here);                    % groundswell/ (has +groundswell)
       addpath(repo);                             % make modpath + packages visible
+      addpath(here);                             % make test_files_dir visible
       modpath();                                 % adds tmt_116, utility, repo
-      % The shared sample file lives alongside the repo, as in the Python tests.
-      cand = fullfile(repo, '..', '..', 'test-files', 'test.tcs');
-      if exist(cand, 'file')
+      % The shared sample file lives in a test-files dir near the repo, as in
+      % the Python tests.
+      td = test_files_dir();
+      cand = fullfile(td, 'test.tcs');
+      if ~isempty(td) && exist(cand, 'file')
         testCase.TestFile = char(java.io.File(cand).getCanonicalPath());
       else
         testCase.TestFile = '';

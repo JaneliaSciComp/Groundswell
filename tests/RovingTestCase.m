@@ -23,8 +23,9 @@ classdef RovingTestCase < matlab.unittest.TestCase
       here = fileparts(mfilename('fullpath'));
       repo = fileparts(here);                    % groundswell/
       addpath(repo);
+      addpath(here);                             % make test_files_dir visible
       modpath();
-      td = fullfile(repo, '..', '..', 'test-files');
+      td = test_files_dir();
       pick = @(name) iff(exist(fullfile(td, name), 'file'), ...
                          @() char(java.io.File(fullfile(td, name)).getCanonicalPath()), ...
                          @() '');
