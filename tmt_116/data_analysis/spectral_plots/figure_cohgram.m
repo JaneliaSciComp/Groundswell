@@ -30,12 +30,15 @@ plot_cohgram(t,f,C_mag,C_phase,...
              C_mag_thresh);
 
 % draw the colorbar
+% the cohereogram itself is a truecolor image, so the axes colormap and
+% CLim go unused by it; we repurpose them to drive the colorbar, which
+% then shows the abs(C)==1 colors for every phase.  (We can't poke the
+% colorbar's internal image directly: since R2014b colorbar returns a
+% ColorBar object with no findable 'TMW_COLORBAR' child.)
 cmap_phase=l75_border(256);  % to show abs(C)==1 colors
-colorbar_axes_h=colorbar;
-colorbar_image_h=findobj(colorbar_axes_h,'Tag','TMW_COLORBAR');
-set(colorbar_image_h,'YData',[-180 +180]);
+colormap(h_a,cmap_phase);
+set(h_a,'CLim',[-180 +180]);
+colorbar_axes_h=colorbar(h_a);
 set(colorbar_axes_h,'YLim',[-180 +180]);
-set(colorbar_image_h,'CData',reshape(cmap_phase,[256 1 3]));
 set(colorbar_axes_h,'YTick',[-180 -90 0 +90 +180]);
-% set(gcf,'CurrentAxes',colorbar_axes_h);
 ylabel(colorbar_axes_h, 'Phase (deg), for |C|=1');
